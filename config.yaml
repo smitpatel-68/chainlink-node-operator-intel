@@ -1,43 +1,13 @@
-# Scoring weights and parameters for Chainlink Node Operator analysis.
-# Tune these values to reflect the current evaluation policy.
+scoring_weights:
+  uptime_rate: 0.30
+  latency_percentile: 0.30
+  deviation_accuracy: 0.25
+  round_participation: 0.15
 
-scoring:
-  weights:
-    uptime: 0.30
-    response_latency: 0.20
-    job_success_rate: 0.25
-    data_accuracy: 0.15
-    slashing_events: 0.10
+tier_thresholds:
+  tier_1: 80
+  tier_2: 60
+  at_risk: 0
 
-  thresholds:
-    min_uptime_pct: 99.0
-    max_response_latency_ms: 2000
-    min_job_success_rate: 0.98
-
-compensation:
-  base_link_per_month: 0.0
-  performance_multiplier_range:
-    min: 0.5
-    max: 1.5
-  tiers:
-    - name: tier_1
-      min_score: 0.90
-      multiplier: 1.50
-    - name: tier_2
-      min_score: 0.75
-      multiplier: 1.20
-    - name: tier_3
-      min_score: 0.60
-      multiplier: 1.00
-    - name: tier_4
-      min_score: 0.00
-      multiplier: 0.50
-
-reporting:
-  output_dir: outputs
-  report_format: markdown
-  include_charts: true
-
-data:
-  raw_dir: data/raw
-  processed_dir: data/processed
+latency_benchmark_ms: 400
+deviation_threshold_pct: 0.05
